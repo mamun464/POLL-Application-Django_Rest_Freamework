@@ -7,7 +7,7 @@ from rest_framework.decorators import api_view
 from rest_framework import status
 
 
-# All qustion and author List
+# All question and author List
 @api_view(['GET','POST'])
 def question_list(request,format=None):
     if request.method == 'GET':
@@ -28,7 +28,7 @@ def question_list(request,format=None):
 
   
 
-# ID wise qustion and author List edit,deleted
+# ID wise question and author List edit,deleted
 @api_view(['GET','PUT', 'DELETE'])
 def single_question(request,id,format=None):
 
@@ -55,7 +55,8 @@ def single_question(request,id,format=None):
                 'author_name': model_1['author_name'],
                 'author_question': model_1['author_question'],
                 'Choice_Answer': model_2['Choice_Answer'],
-                'vote': model_2['vote']
+                'vote': model_2['vote'],
+                'Publish_date': model_1['pub_date']
             }
             
         return Response(combined_entry)
@@ -75,7 +76,7 @@ def single_question(request,id,format=None):
 
 
 
-
+# For Combained Data from two  Model Author and Choice
 def getCombined(model_1, model_2):
     combined_dict = {}
 
@@ -92,7 +93,8 @@ def getCombined(model_1, model_2):
                 'author_name': item_1['author_name'],
                 'author_question': item_1['author_question'],
                 'Choice_Answer': item_2['Choice_Answer'],
-                'vote': item_2['vote']
+                'vote': item_2['vote'],
+                'Publish_date': item_1['pub_date']
             }
             combined_dict[id_1] = combined_entry
 

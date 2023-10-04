@@ -5,7 +5,7 @@ from .models import Choice
 class AuthorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Author
-        fields = ['id', 'author_name', 'author_question']
+        fields = ['id', 'author_name', 'author_question','pub_date']
 
 
 class ChoiceSerializer(serializers.ModelSerializer):
